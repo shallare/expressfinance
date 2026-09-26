@@ -54,7 +54,7 @@ export function LanguageSwitcher() {
   }, [open]);
 
   return (
-    <div ref={ref} className="fixed bottom-5 left-5 z-40 sm:bottom-6 sm:left-6">
+    <div ref={ref} className="fixed z-40" style={{ bottom: 'calc(1.25rem + env(safe-area-inset-bottom, 0px))', left: 'calc(1.25rem + env(safe-area-inset-left, 0px))' }}>
       <AnimatePresence>
         {open && (
           <motion.ul

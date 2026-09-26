@@ -15,7 +15,7 @@ export function Intro() {
   const s = dict.intro;
 
   return (
-    <Section id="a-propos" ariaLabelledBy="intro-title">
+    <Section id="a-propos" ariaLabelledBy="intro-title" className="overflow-hidden">
       <div className="container-page grid items-center gap-12 lg:grid-cols-12">
         {/* Photo + carte flottante ------------------------------------- */}
         <Reveal from="right" className="relative lg:col-span-5">
@@ -23,7 +23,7 @@ export function Intro() {
             <Image src="/images/photo-2.jpg" alt={s.imageAlt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" aria-hidden="true" />
           </div>
-          <div className="absolute -bottom-6 -right-3 rounded-2xl border border-line bg-white p-5 shadow-card-hover sm:right-6 lg:-right-8">
+          <div className="absolute -bottom-6 right-2 rounded-2xl border border-line bg-white p-5 shadow-card-hover sm:right-6 lg:-right-8">
             <p className="text-xs font-medium uppercase tracking-wide text-ink-subtle">{s.stats.rate}</p>
             <p className="mt-1 font-display text-3xl font-bold text-navy-900">2 %</p>
             <p className="mt-2 text-xs text-ink-muted">{s.stats.duration} : <strong className="text-navy-900">{s.responseValue}</strong></p>

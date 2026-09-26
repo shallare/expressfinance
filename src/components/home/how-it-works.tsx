@@ -14,7 +14,7 @@ export function HowItWorks() {
   const { locale, dict } = useLocale();
   const s = dict.how;
   return (
-    <Section id="comment-ca-marche" ariaLabelledBy="how-title" className="scroll-mt-20">
+    <Section id="comment-ca-marche" ariaLabelledBy="how-title" className="scroll-mt-20 overflow-hidden">
       <div className="container-page grid items-center gap-12 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <Reveal>

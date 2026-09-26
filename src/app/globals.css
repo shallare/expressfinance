@@ -82,10 +82,13 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Empêche tout débordement horizontal (éléments décoratifs) de décaler les boutons fixés sur mobile. */
+    overflow-x: clip;
   }
   body {
     @apply bg-surface text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight text-navy-900;
