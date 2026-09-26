@@ -33,7 +33,8 @@ export const siteConfig = {
     phoneE164: '+393773265418',
     /** Format attendu par wa.me : indicatif + numéro, sans « + » ni espace. */
     whatsappNumber: '393773265418',
-    email: 'financeexpress258@gmail.com',
+    /** Adresse de contact affichée aux visiteurs (support). */
+    email: 'support@expresssfinance.com',
     address: {
       street: '724 Chaussée de Wavre',
       postalCode: '1040',
