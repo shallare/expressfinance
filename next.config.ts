@@ -58,6 +58,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Build autonome (dossier .next/standalone) pour un déploiement Docker / VPS.
+  output: 'standalone',
   poweredByHeader: false,
   compress: true,
   images: {

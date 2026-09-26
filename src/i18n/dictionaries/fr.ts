@@ -83,7 +83,7 @@ export const fr = {
     titleStart: 'Votre projet mérite',
     titleHighlight: 'un financement simple',
     titleEnd: 'et transparent.',
-    subtitle: 'Prêt personnel, immobilier ou professionnel de 3 000 € à 800 000 €. Simulez, déposez votre demande en ligne et échangez avec un conseiller dédié.',
+    subtitle: 'Prêt personnel, immobilier ou professionnel de 3 000 € à 800 000 €. Simulez, déposez votre demande en ligne et échangez avec un conseiller dédié. \nDans la procédure vous aurez des dépenses à faire afin de faire enregistrer votre demande ainsi que pour la documentation.',
     ctaApply: 'Demander un financement',
     ctaSimulate: 'Simuler mon prêt',
     imageAlt: 'Conseiller Express Finance en rendez-vous avec une cliente',
