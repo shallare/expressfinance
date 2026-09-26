@@ -47,7 +47,7 @@ export const es: Dictionary = {
     ctaApply: 'Solicitar financiación',
     ctaSimulate: 'Simular mi préstamo',
     imageAlt: 'Asesor de Express Finance en reunión con una clienta',
-    trust: ['Tipo fijo del 2 %', 'Gastos de estudio detallados en la oferta y cobrados en la firma', 'Ningún pago antes del desembolso'],
+    trust: ['Tipo fijo del 2 %', 'El pago de los gastos de gestión es obligatorio antes del desembolso de los fondos.'],
   },
   intro: {
     eyebrow: 'Quiénes somos',

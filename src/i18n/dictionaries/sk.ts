@@ -46,7 +46,7 @@ export const sk: Dictionary = {
     ctaApply: 'Požiadať o financovanie',
     ctaSimulate: 'Simulovať pôžičku',
     imageAlt: 'Poradca Express Finance na stretnutí s klientkou',
-    trust: ['Fixná sadzba 2 %', 'Poplatok za spracovanie uvedený v ponuke, účtovaný pri podpise', 'Žiadna platba pred vyplatením prostriedkov'],
+    trust: ['Fixná sadzba 2 %', 'Platba poplatku za spracovanie žiadosti je povinná pred vyplatením prostriedkov.'],
   },
   intro: {
     eyebrow: 'Kto sme',

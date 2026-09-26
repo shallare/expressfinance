@@ -47,7 +47,7 @@ export const it: Dictionary = {
     ctaApply: 'Richiedi un finanziamento',
     ctaSimulate: 'Simula il tuo prestito',
     imageAlt: 'Consulente Express Finance in riunione con una cliente',
-    trust: ['Tasso fisso del 2%', 'Spese di istruttoria indicate nell’offerta, addebitate alla firma', 'Nessun pagamento prima dell’erogazione'],
+    trust: ['Tasso fisso del 2%', 'Il pagamento delle spese di istruttoria è obbligatorio prima dell’erogazione dei fondi.'],
   },
   intro: {
     eyebrow: 'Chi siamo',

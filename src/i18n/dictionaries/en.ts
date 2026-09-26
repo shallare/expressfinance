@@ -46,7 +46,7 @@ export const en: Dictionary = {
     ctaApply: 'Apply for financing',
     ctaSimulate: 'Simulate my loan',
     imageAlt: 'An Express Finance adviser meeting a client',
-    trust: ['Fixed 2% rate', 'Arrangement fees stated in the offer and charged at signing', 'No payment before the funds are released'],
+    trust: ['Fixed 2% rate', 'Payment of the application fees is mandatory before the disbursement of the funds.'],
   },
   intro: {
     eyebrow: 'Who we are',

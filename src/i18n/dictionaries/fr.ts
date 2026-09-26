@@ -87,7 +87,7 @@ export const fr = {
     ctaApply: 'Demander un financement',
     ctaSimulate: 'Simuler mon prêt',
     imageAlt: 'Conseiller Express Finance en rendez-vous avec une cliente',
-    trust: ['Taux fixe de 2 %', 'Frais de dossier précisés dans l’offre, prélevés à la signature', 'Aucun paiement avant le versement des fonds'],
+    trust: ['Taux fixe de 2 %', 'Paiement des frais de dossier obligatoire avant décaissement des fonds'],
   },
   intro: {
     eyebrow: 'Qui sommes-nous',

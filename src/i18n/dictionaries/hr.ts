@@ -46,7 +46,7 @@ export const hr: Dictionary = {
     ctaApply: 'Zatražite financiranje',
     ctaSimulate: 'Simulirajte kredit',
     imageAlt: 'Savjetnik Express Finance na sastanku s klijenticom',
-    trust: ['Fiksna kamatna stopa 2 %', 'Naknada za obradu navedena u ponudi, naplaćuje se pri potpisu', 'Bez plaćanja prije isplate sredstava'],
+    trust: ['Fiksna kamatna stopa 2 %', 'Plaćanje naknade za obradu zahtjeva obavezno je prije isplate sredstava.'],
   },
   intro: {
     eyebrow: 'Tko smo mi',

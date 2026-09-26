@@ -46,7 +46,7 @@ export const sl: Dictionary = {
     ctaApply: 'Zaprosite za financiranje',
     ctaSimulate: 'Simulirajte posojilo',
     imageAlt: 'Svetovalec Express Finance na sestanku s stranko',
-    trust: ['Fiksna obrestna mera 2 %', 'Stroški odobritve navedeni v ponudbi, zaračunani ob podpisu', 'Brez plačila pred izplačilom sredstev'],
+    trust: ['Fiksna obrestna mera 2 %', 'Plačilo stroškov obdelave je obvezno pred izplačilom sredstev.'],
   },
   intro: {
     eyebrow: 'Kdo smo',

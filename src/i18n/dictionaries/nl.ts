@@ -46,7 +46,7 @@ export const nl: Dictionary = {
     ctaApply: 'Financiering aanvragen',
     ctaSimulate: 'Mijn lening simuleren',
     imageAlt: 'Adviseur van Express Finance in gesprek met een klant',
-    trust: ['Vaste rentevoet van 2 %', 'Dossierkosten vermeld in het aanbod en aangerekend bij ondertekening', 'Geen betaling vóór de uitbetaling van de fondsen'],
+    trust: ['Vaste rentevoet van 2 %', 'Betaling van de dossierkosten is verplicht vóór de uitbetaling van de fondsen.'],
   },
   intro: {
     eyebrow: 'Wie zijn wij',
