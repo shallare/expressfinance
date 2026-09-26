@@ -1,0 +1,46 @@
+{
+  "name": "express-finance",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Site vitrine et plateforme de demande de financement Express Finance",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test src/lib/finance/__tests__/loan-calculator.test.mjs",
+    "verify": "npm run typecheck && npm run lint && npm run build"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.8.0",
+    "@supabase/supabase-js": "2.95.0",
+    "clsx": "2.1.1",
+    "framer-motion": "12.43.0",
+    "lucide-react": "0.545.0",
+    "next": "15.5.26",
+    "nodemailer": "7.0.6",
+    "present": "^1.0.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "scripts": "^0.1.0",
+    "server-only": "0.0.1",
+    "tailwind-merge": "3.3.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@tailwindcss/postcss": "4.1.18",
+    "@types/node": "22.18.8",
+    "@types/nodemailer": "7.0.2",
+    "@types/react": "19.1.17",
+    "@types/react-dom": "19.1.11",
+    "eslint": "9.31.0",
+    "eslint-config-next": "15.5.26",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.3"
+  }
+}

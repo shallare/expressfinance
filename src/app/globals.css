@@ -1,0 +1,301 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   Design tokens — identité Express Finance (provisoire, facilement modifiable)
+   ========================================================================== */
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-lexend), var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Vert profond — surfaces sombres (dérivé de la charte) */
+  --color-navy-50: #eef6f6;
+  --color-navy-100: #d5e8e8;
+  --color-navy-200: #a9d0d1;
+  --color-navy-300: #6fb0b2;
+  --color-navy-400: #3f8f92;
+  --color-navy-500: #2b7376;
+  --color-navy-600: #1f5c5f;
+  --color-navy-700: #184a4d;
+  --color-navy-800: #123a3c;
+  --color-navy-900: #0d2c2e;
+  --color-navy-950: #081e20;
+
+  /* Turquoise (#29ADB2) — couleur secondaire, actions */
+  --color-brand-50: #eafafa;
+  --color-brand-100: #cdf2f3;
+  --color-brand-200: #9fe4e6;
+  --color-brand-300: #66d1d5;
+  --color-brand-400: #3cbfc4;
+  --color-brand-500: #29adb2;
+  --color-brand-600: #1f8f94;
+  --color-brand-700: #1a7276;
+  --color-brand-800: #175a5d;
+  --color-brand-900: #144749;
+
+  /* Sauge (#A3C9A8) — couleur principale de la charte, utilisée en accent */
+  --color-sage-100: #eef6ef;
+  --color-sage-200: #d6e8d9;
+  --color-sage-300: #a3c9a8;
+  --color-sage-400: #86b58d;
+  --color-sage-500: #669c6e;
+  --color-sage-600: #4f7f56;
+  --color-sage-700: #3e6444;
+
+  /* Neutres */
+  --color-surface: #f6f8fc;
+  --color-surface-2: #eef2f8;
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+  --color-ink-subtle: #64748b;
+  --color-line: #e2e8f0;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+  --shadow-card-hover: 0 2px 4px rgba(15, 23, 42, 0.05), 0 20px 40px -16px rgba(15, 23, 42, 0.2);
+  --shadow-glow: 0 0 0 1px rgba(41, 173, 178, 0.18), 0 16px 40px -12px rgba(41, 173, 178, 0.4);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -14px, 0); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+    60% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  }
+}
+
+/* ============================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-navy-900;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-brand-500/20 text-navy-900;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================================================
+   Utilitaires maison
+   ========================================================================== */
+@utility container-page {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+}
+
+@utility text-gradient-brand {
+  background: linear-gradient(120deg, #66d1d5 0%, #a3c9a8 55%, #d6e8d9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grid-navy {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility card-surface {
+  @apply rounded-2xl border border-line bg-white shadow-card;
+}
+
+@utility card-hover {
+  @apply transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-brand-200 hover:shadow-card-hover motion-reduce:hover:translate-y-0;
+}
+
+/* Slider natif harmonisé */
+@layer components {
+  .ef-range {
+    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-navy-100 accent-brand-500;
+  }
+  .ef-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid #29adb2;
+    box-shadow: 0 2px 8px rgba(41, 173, 178, 0.4);
+    transition: transform 0.15s ease;
+  }
+  .ef-range::-webkit-slider-thumb:hover { transform: scale(1.08); }
+  .ef-range::-moz-range-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid #29adb2;
+    box-shadow: 0 2px 8px rgba(41, 173, 178, 0.4);
+  }
+  .ef-input {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink shadow-xs transition-[border-color,box-shadow] placeholder:text-ink-subtle/70 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 focus-visible:ring-4 focus-visible:ring-brand-500/15 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:bg-surface-2 aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:ring-red-500/15;
+  }
+  .ef-label {
+    @apply mb-1.5 block text-sm font-medium text-navy-800;
+  }
+  .ef-help {
+    @apply mt-1.5 text-xs text-ink-subtle;
+  }
+  .ef-error {
+    @apply mt-1.5 text-sm text-red-600;
+  }
+  .prose-legal {
+    @apply text-ink-muted leading-relaxed;
+  }
+  .prose-legal h2 {
+    @apply mt-10 mb-3 text-xl font-semibold;
+  }
+  .prose-legal h3 {
+    @apply mt-6 mb-2 text-base font-semibold;
+  }
+  .prose-legal p {
+    @apply mb-4;
+  }
+  .prose-legal ul {
+    @apply mb-4 list-disc space-y-1.5 pl-6;
+  }
+  .prose-legal a {
+    @apply text-brand-600 underline underline-offset-2 hover:text-brand-700;
+  }
+}
+
+/* ============================================================================
+   Écran de chargement de marque (premier accès de la session)
+   ========================================================================== */
+@layer components {
+  .ef-splash {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 30% 20%, #1a7276 0%, #0d2c2e 45%, #081e20 100%);
+    color: #fff;
+    animation: splash-out 0.45s ease-in 0.75s forwards;
+    pointer-events: none;
+  }
+  .splash-seen .ef-splash {
+    display: none;
+  }
+  .ef-splash__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    animation: splash-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .ef-splash__mark {
+    filter: drop-shadow(0 12px 30px rgba(41, 173, 178, 0.45));
+    animation: splash-float 1.2s ease-in-out infinite alternate;
+  }
+  .ef-splash__name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    font-family: var(--font-display);
+  }
+  .ef-splash__brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .ef-splash__sub {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    color: #a3c9a8;
+  }
+  .ef-splash__slogan {
+    font-size: 0.85rem;
+    color: rgba(213, 232, 232, 0.75);
+  }
+  .ef-splash__bar {
+    margin-top: 0.4rem;
+    height: 3px;
+    width: 9rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .ef-splash__bar span {
+    display: block;
+    height: 100%;
+    width: 40%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #29adb2, #a3c9a8);
+    animation: splash-bar 0.9s ease-in-out infinite;
+  }
+  @keyframes splash-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes splash-out {
+    to { opacity: 0; visibility: hidden; }
+  }
+  @keyframes splash-float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-6px); }
+  }
+  @keyframes splash-bar {
+    0% { transform: translateX(-110%); }
+    100% { transform: translateX(260%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ef-splash { animation: splash-out 0.2s ease-in 0.3s forwards; }
+    .ef-splash__mark, .ef-splash__bar span { animation: none; }
+  }
+}
