@@ -4,6 +4,7 @@ import { siteConfig } from '@/lib/config/site';
 import { fontClassName } from '@/lib/fonts';
 import { defaultKeywords, organizationJsonLd } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/json-ld';
+import { GoogleTag } from '@/components/analytics/google-tag';
 import { SplashScreen } from '@/components/layout/splash-screen';
 import { RouteProgress } from '@/components/layout/route-progress';
 import { Suspense } from 'react';
@@ -63,6 +64,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} className={fontClassName}>
       <body className="flex min-h-dvh flex-col">
+        <GoogleTag />
         <SplashScreen />
         <Suspense fallback={null}>
           <RouteProgress />

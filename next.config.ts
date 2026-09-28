@@ -22,6 +22,13 @@ const SUPABASE_ORIGIN = (() => {
 // Cloudflare Turnstile (anti-robot) n'est autorisé que si une clé est configurée.
 const TURNSTILE_ORIGIN = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? 'https://challenges.cloudflare.com' : '';
 
+// Balise Google (gtag.js / Google Ads) — voir src/components/analytics/google-tag.tsx
+const GOOGLE_SCRIPT_ORIGINS =
+  'https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com';
+const GOOGLE_CONNECT_ORIGINS =
+  'https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://*.google-analytics.com https://*.analytics.google.com';
+const GOOGLE_FRAME_ORIGINS = 'https://td.doubleclick.net https://bid.g.doubleclick.net https://www.googletagmanager.com';
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   // `unsafe-inline` reste nécessaire pour les styles générés par Next.js.
@@ -29,9 +36,11 @@ const contentSecurityPolicy = [
   "font-src 'self' data:",
   "img-src 'self' data: blob: https:",
   // Next.js injecte des scripts inline pour l'hydratation.
-  `${process.env.NODE_ENV === 'production' ? "script-src 'self' 'unsafe-inline'" : "script-src 'self' 'unsafe-inline' 'unsafe-eval'"} ${TURNSTILE_ORIGIN}`.trim(),
-  `connect-src 'self' ${SUPABASE_ORIGIN} ${TURNSTILE_ORIGIN}`.replace(/\s+/g, ' ').trim(),
-  `frame-src ${TURNSTILE_ORIGIN || "'none'"}`,
+  `${process.env.NODE_ENV === 'production' ? "script-src 'self' 'unsafe-inline'" : "script-src 'self' 'unsafe-inline' 'unsafe-eval'"} ${TURNSTILE_ORIGIN} ${GOOGLE_SCRIPT_ORIGINS}`
+    .replace(/\s+/g, ' ')
+    .trim(),
+  `connect-src 'self' ${SUPABASE_ORIGIN} ${TURNSTILE_ORIGIN} ${GOOGLE_CONNECT_ORIGINS}`.replace(/\s+/g, ' ').trim(),
+  `frame-src ${TURNSTILE_ORIGIN} ${GOOGLE_FRAME_ORIGINS}`.replace(/\s+/g, ' ').trim(),
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
