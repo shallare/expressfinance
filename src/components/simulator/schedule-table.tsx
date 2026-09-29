@@ -44,40 +44,40 @@ export function ScheduleTable({ result }: { result: LoanResult }) {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[640px] text-sm">
+        <table className="w-full text-xs sm:text-sm md:min-w-[640px]">
           <caption className="sr-only">{s.caption}</caption>
           <thead className="bg-surface-2/80 text-left text-xs uppercase tracking-wide text-ink-subtle">
             <tr>
-              <th scope="col" className="px-4 py-3 font-semibold">{s.cols.n}</th>
-              <th scope="col" className="px-4 py-3 font-semibold">{s.cols.period}</th>
-              <th scope="col" className="px-4 py-3 text-right font-semibold">{s.cols.principal}</th>
-              <th scope="col" className="px-4 py-3 text-right font-semibold">{s.cols.interest}</th>
-              {hasFees && <th scope="col" className="px-4 py-3 text-right font-semibold">{s.cols.fees}</th>}
-              <th scope="col" className="px-4 py-3 text-right font-semibold">{s.cols.payment}</th>
-              <th scope="col" className="px-4 py-3 text-right font-semibold">{s.cols.balance}</th>
+              <th scope="col" className="px-3 py-3 font-semibold sm:px-4">{s.cols.n}</th>
+              <th scope="col" className="px-3 py-3 font-semibold sm:px-4">{s.cols.period}</th>
+              <th scope="col" className="hidden px-4 py-3 text-right font-semibold md:table-cell">{s.cols.principal}</th>
+              <th scope="col" className="hidden px-4 py-3 text-right font-semibold md:table-cell">{s.cols.interest}</th>
+              {hasFees && <th scope="col" className="hidden px-4 py-3 text-right font-semibold md:table-cell">{s.cols.fees}</th>}
+              <th scope="col" className="px-3 py-3 text-right font-semibold sm:px-4">{s.cols.payment}</th>
+              <th scope="col" className="px-3 py-3 text-right font-semibold sm:px-4">{s.cols.balance}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-line tabular-nums">
             {visible.map((row) => (
               <tr key={row.index} className="transition-colors hover:bg-brand-50/40">
-                <td className="px-4 py-2.5 text-ink-subtle">{row.index}</td>
-                <td className="px-4 py-2.5 capitalize text-ink-muted">{formatMonthYear(row.date, locale)}</td>
-                <td className="px-4 py-2.5 text-right">{fc(row.principal)}</td>
-                <td className="px-4 py-2.5 text-right text-sage-700">{fc(row.interest)}</td>
-                {hasFees && <td className="px-4 py-2.5 text-right text-ink-muted">{fc(row.fees)}</td>}
-                <td className="px-4 py-2.5 text-right font-semibold text-navy-900">{fc(row.payment)}</td>
-                <td className="px-4 py-2.5 text-right text-ink-muted">{fc(row.remainingBalance)}</td>
+                <td className="px-3 py-2.5 text-ink-subtle sm:px-4">{row.index}</td>
+                <td className="whitespace-nowrap px-3 py-2.5 capitalize text-ink-muted sm:px-4">{formatMonthYear(row.date, locale)}</td>
+                <td className="hidden px-4 py-2.5 text-right md:table-cell">{fc(row.principal)}</td>
+                <td className="hidden px-4 py-2.5 text-right text-sage-700 md:table-cell">{fc(row.interest)}</td>
+                {hasFees && <td className="hidden px-4 py-2.5 text-right text-ink-muted md:table-cell">{fc(row.fees)}</td>}
+                <td className="whitespace-nowrap px-3 py-2.5 text-right font-semibold text-navy-900 sm:px-4">{fc(row.payment)}</td>
+                <td className="whitespace-nowrap px-3 py-2.5 text-right text-ink-muted sm:px-4">{fc(row.remainingBalance)}</td>
               </tr>
             ))}
           </tbody>
           <tfoot className="border-t-2 border-navy-100 bg-surface-2/60 font-semibold tabular-nums">
             <tr>
-              <td className="px-4 py-3" colSpan={2}>{s.total}</td>
-              <td className="px-4 py-3 text-right">{fc(totals.principal)}</td>
-              <td className="px-4 py-3 text-right text-sage-700">{fc(totals.interest)}</td>
-              {hasFees && <td className="px-4 py-3 text-right">{fc(totals.fees)}</td>}
-              <td className="px-4 py-3 text-right text-navy-900">{fc(totals.payment)}</td>
-              <td className="px-4 py-3 text-right">—</td>
+              <td className="px-3 py-3 sm:px-4" colSpan={2}>{s.total}</td>
+              <td className="hidden px-4 py-3 text-right md:table-cell">{fc(totals.principal)}</td>
+              <td className="hidden px-4 py-3 text-right text-sage-700 md:table-cell">{fc(totals.interest)}</td>
+              {hasFees && <td className="hidden px-4 py-3 text-right md:table-cell">{fc(totals.fees)}</td>}
+              <td className="whitespace-nowrap px-3 py-3 text-right text-navy-900 sm:px-4">{fc(totals.payment)}</td>
+              <td className="px-3 py-3 text-right sm:px-4">—</td>
             </tr>
           </tfoot>
         </table>

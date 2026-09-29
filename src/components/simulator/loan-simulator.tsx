@@ -31,11 +31,11 @@ function RangeField({ id, label, value, min, max, step, suffix, onChange, onComm
   const percent = Math.min(100, Math.max(0, ((value - min) / (max - min)) * 100));
   return (
     <div>
-      <div className="mb-2 flex items-end justify-between gap-3">
-        <label htmlFor={id} className="text-sm font-medium text-navy-800">{label}</label>
-        <div className="relative">
-          <input id={id} type="number" inputMode="numeric" className={cn('ef-input w-36 py-2 pr-12 text-right font-semibold tabular-nums', compact && 'w-32')} value={Number.isFinite(value) ? value : ''} min={min} max={max} step={step} onChange={(e) => onChange(e.target.valueAsNumber)} onBlur={onCommit} aria-describedby={`${id}-range-help`} />
-          <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-ink-subtle">{suffix}</span>
+      <div className="mb-2 flex flex-wrap items-end justify-between gap-x-3 gap-y-2">
+        <label htmlFor={id} className="min-w-0 text-sm font-medium text-navy-800">{label}</label>
+        <div className="ml-auto flex items-center rounded-xl border border-line bg-white shadow-xs transition-[border-color,box-shadow] focus-within:border-brand-500 focus-within:ring-4 focus-within:ring-brand-500/15">
+          <input id={id} type="number" inputMode="numeric" className={cn('w-24 min-w-0 rounded-xl bg-transparent py-2 pl-3 pr-1 text-right text-base font-semibold tabular-nums text-ink outline-none focus-visible:ring-0 focus-visible:ring-offset-0', compact && 'w-20')} value={Number.isFinite(value) ? value : ''} min={min} max={max} step={step} onChange={(e) => onChange(e.target.valueAsNumber)} onBlur={onCommit} aria-describedby={`${id}-range-help`} />
+          <span className="shrink-0 pl-1 pr-3 text-sm text-ink-subtle">{suffix}</span>
         </div>
       </div>
       <input type="range" aria-label={label} className="ef-range" style={{ background: `linear-gradient(to right, #29adb2 ${percent}%, #d5e8e8 ${percent}%)` }} value={Math.min(max, Math.max(min, Number.isFinite(value) ? value : min))} min={min} max={max} step={step} onChange={(e) => onChange(e.target.valueAsNumber)} />
@@ -72,7 +72,7 @@ export function LoanSimulator({ products, settings, variant = 'full', initial }:
   return (
     <div className={cn('grid gap-6', !compact && 'lg:grid-cols-12 lg:gap-8')}>
       {/* Paramètres ---------------------------------------------------- */}
-      <div className={cn('card-surface p-5 sm:p-7', !compact && 'lg:col-span-5')}>
+      <div className={cn('card-surface min-w-0 p-5 sm:p-7', !compact && 'lg:col-span-5')}>
         <div className="space-y-6">
           <div>
             <label htmlFor={`${uid}-product`} className="ef-label">{s.product}</label>
@@ -154,21 +154,21 @@ export function LoanSimulator({ products, settings, variant = 'full', initial }:
       </div>
 
       {/* Résultats ------------------------------------------------------ */}
-      <div className={cn('space-y-6', !compact && 'lg:col-span-7')}>
+      <div className={cn('min-w-0 space-y-6', !compact && 'lg:col-span-7')}>
         <div className="relative overflow-hidden rounded-2xl bg-navy-950 p-6 text-white shadow-glow sm:p-8" aria-live="polite">
           <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-sage-300/20 blur-3xl" aria-hidden="true" />
           <div className="relative">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-300">{s.monthlyEstimate}</p>
             <AnimatePresence mode="wait" initial={false}>
-              <motion.p key={summaryKey} initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="mt-2 font-display text-4xl font-bold tabular-nums sm:text-5xl">
+              <motion.p key={summaryKey} initial={reduce ? { opacity: 1 } : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="mt-2 font-display text-3xl font-bold sm:text-4xl tabular-nums sm:text-5xl">
                 {fc(result.monthlyPayment)}
-                <span className="ml-2 text-base font-medium text-navy-100/70">{s.perMonth}</span>
+                <span className="ml-2 whitespace-nowrap text-base font-medium text-navy-100/70">{s.perMonth}</span>
               </motion.p>
             </AnimatePresence>
             <p className="mt-2 text-sm text-navy-100/75">{t(s.context, { amount: fcc(sim.state.amount), duration: formatDuration(sim.state.duration, locale), product: product.name })}</p>
 
-            <dl className={cn('mt-6 grid gap-4 border-t border-white/10 pt-6 text-sm', compact ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-4')}>
+            <dl className={cn('mt-6 grid gap-4 border-t border-white/10 pt-6 text-sm hyphens-auto [overflow-wrap:anywhere]', compact ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-4')}>
               <div><dt className="text-navy-100/70">{s.principal}</dt><dd className="mt-1 font-semibold tabular-nums">{fc(sim.state.amount)}</dd></div>
               <div><dt className="text-navy-100/70">{s.totalInterest}</dt><dd className="mt-1 font-semibold tabular-nums text-sage-300">{fc(result.totalInterest)}</dd></div>
               {!compact && <div><dt className="text-navy-100/70">{s.feesIncluded}</dt><dd className="mt-1 font-semibold tabular-nums">{fc(result.totalFees)}</dd></div>}

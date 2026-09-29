@@ -7,7 +7,7 @@ export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'wha
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-xl font-semibold whitespace-nowrap transition-[background-color,box-shadow,transform,color,border-color] duration-200 ease-out select-none disabled:pointer-events-none disabled:opacity-60 active:scale-[0.98] motion-reduce:active:scale-100';
+  'inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-center leading-snug transition-[background-color,box-shadow,transform,color,border-color] duration-200 ease-out select-none disabled:pointer-events-none disabled:opacity-60 active:scale-[0.98] motion-reduce:active:scale-100';
 
 const variants: Record<ButtonVariant, string> = {
   primary:
@@ -23,9 +23,9 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: 'h-9 px-3.5 text-sm',
-  md: 'h-11 px-5 text-sm sm:text-[0.95rem]',
-  lg: 'h-13 px-7 text-base',
+  sm: 'min-h-9 px-3.5 py-1.5 text-sm',
+  md: 'min-h-11 px-5 py-2 text-sm sm:text-[0.95rem]',
+  lg: 'min-h-13 px-7 py-2.5 text-base',
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

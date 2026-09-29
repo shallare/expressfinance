@@ -25,8 +25,8 @@ export function CostBreakdownRing({ result }: { result: LoanResult }) {
   let offset = 0;
 
   return (
-    <figure className="flex items-center gap-5" aria-labelledby={`${id}-title`}>
-      <svg viewBox="0 0 100 100" className="h-32 w-32 shrink-0 -rotate-90" role="img" aria-describedby={`${id}-desc`}>
+    <figure className="flex flex-wrap items-center gap-4 sm:gap-5" aria-labelledby={`${id}-title`}>
+      <svg viewBox="0 0 100 100" className="h-24 w-24 shrink-0 -rotate-90 sm:h-32 sm:w-32" role="img" aria-describedby={`${id}-desc`}>
         <title id={`${id}-title`}>{s.breakdown}</title>
         <desc id={`${id}-desc`}>{parts.map((p) => `${p.label} : ${formatCurrency(p.value, locale)}`).join(', ')}</desc>
         <circle cx="50" cy="50" r={radius} fill="none" stroke="#eef2f8" strokeWidth="12" />
@@ -39,7 +39,7 @@ export function CostBreakdownRing({ result }: { result: LoanResult }) {
           return el;
         })}
       </svg>
-      <figcaption className="space-y-2 text-sm">
+      <figcaption className="min-w-[9rem] flex-1 space-y-2 text-sm">
         {parts.map((p) => (
           <div key={p.label} className="flex items-center gap-2.5">
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: p.color }} aria-hidden="true" />

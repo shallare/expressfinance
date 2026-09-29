@@ -89,10 +89,15 @@
     @apply bg-surface text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
+    /* Les mots très longs (URL, e-mails, composés néerlandais/grecs…) se coupent au lieu de déborder. */
+    overflow-wrap: break-word;
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight text-navy-900;
     text-wrap: balance;
+    /* Titres sur mobile : césure automatique selon la langue de la page, et coupure forcée en dernier recours. */
+    hyphens: auto;
+    overflow-wrap: anywhere;
   }
   p {
     text-wrap: pretty;
